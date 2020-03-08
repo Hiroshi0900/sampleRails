@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
 		log_in user
 		# ログイン状態を保存するかチェックボックスで変更する
 		params[:session][:remember_me] == '1' ? remeber(user) : forget(user)
-		redirect_to user
+		# redirect_to user
+		redirect_back_or user
 	else
 		flash.now[:danger] = 'Invalid email/password combination'
 		render 'new'
